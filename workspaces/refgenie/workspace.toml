@@ -1,0 +1,79 @@
+name = "refgenie"
+description = "Refgenie reference genome management ecosystem - tools for managing, serving, and accessing reference genome assets"
+
+[[repos]]
+path = "repos/ref_decoy"
+remote = "git@github.com:databio/ref_decoy"
+
+[[repos]]
+path = "repos/refgenconf"
+remote = "git@github.com:databio/refgenconf"
+
+[[repos]]
+path = "repos/refgenie-docs"
+remote = "git@github.com:refgenie/refgenie-docs.git"
+
+[[repos]]
+path = "repos/refgenie_looper_demo"
+remote = "git@github.com:refgenie/refgenie_looper_demo"
+
+[[repos]]
+path = "repos/refgenie_myplugin"
+remote = "git@github.com:databio/refgenie_myplugin.git"
+
+[[repos]]
+path = "repos/refgenie_nfcore"
+remote = "git@github.com:databio/refgenie_nfcore.git"
+
+[[repos]]
+path = "repos/refgenieserver"
+remote = "git@github.com:databio/refgenieserver"
+
+[[repos]]
+path = "repos/refgenomes.databio.org"
+remote = "git@github.com:refgenie/refgenomes.databio.org"
+
+[[repos]]
+path = "repos/refget"
+remote = "git@github.com:refgenie/refget"
+
+[[repos]]
+path = "repos/refget-ga4gh"
+remote = "git@github.com:ga4gh/refget"
+
+[[repos]]
+path = "repos/rg.databio.org"
+remote = "git@github.com:refgenie/rg.databio.org"
+
+[[repos]]
+path = "repos/rg_deploy_demo"
+remote = "git@github.com:refgenie/rg_deploy_demo"
+
+[[repos]]
+path = "repos/seqcolapi"
+remote = "git@github.com:refgenie/seqcolapi.git"
+
+[[repos]]
+path = "repos/server_deploy_demo"
+remote = "git@github.com:databio/server_deploy_demo"
+
+[[repos]]
+path = "repos/refgenie-ui"
+remote = "git@github.com:refgenie/refgenie-ui.git"
+
+[[repos]]
+path = "repos/recipes"
+remote = "git@github.com:refgenie/recipes.git"
+
+[[repos]]
+path = "repos/gtars"
+remote = "git@github.com:databio/gtars.git"
+
+[[repos]]
+path = "repos/refgetstore-benchmark"
+remote = "git@github.com:databio/refgetstore-benchmark.git"
+
+
+[[repos]]
+path = "repos/ga4gh-refget"
+remote = "git@github.com:ga4gh/refget"
