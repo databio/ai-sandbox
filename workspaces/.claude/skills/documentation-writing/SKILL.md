@@ -302,6 +302,32 @@ When your tool has a single primary audience, types-first works well:
 - Break up text with headers and lists
 - Cut everything unnecessary
 
+### CommonMark List Formatting
+
+For compatibility with MkDocs and other CommonMark parsers:
+
+- **Empty line before lists:** Always include a blank line before starting a list
+- **4-space nested indentation:** Use 4 spaces (not 2) for nested list items
+
+```markdown
+# Correct
+
+Here is a list:
+
+- First item
+- Second item
+    - Nested item (4 spaces)
+    - Another nested item
+- Third item
+
+# Wrong - missing blank line and 2-space indent
+
+Here is a list:
+- First item
+- Second item
+  - Nested item (2 spaces - won't render correctly)
+```
+
 ### Keep Examples Working
 
 - Test all code examples
