@@ -7,13 +7,16 @@ A collection of AI resources, guides, and brainstorming space for the lab.
 ```
 ai-sandbox/
 ├── agents/           # Agent examples
-├── commands/         # Custom command examples
-├── skills/           # Skill examples
+├── commands/         # Custom slash commands (organized by user)
+├── skills/           # Skill definitions (organized by user)
+├── workspaces/       # Multi-repo project workspaces
+│   ├── workspace.py  # Setup script for workspaces
+│   └── <name>/       # Individual workspace (e.g. refgenie)
+│       ├── .claude/  # Shared AI config (tracked)
+│       ├── plans/    # Cross-repo plans and docs
+│       └── repos/    # Cloned git repos (gitignored)
 └── resources/        # Guides, ideas, and references
     ├── guides/       # How-to guides for AI tools
-    │   ├── claude-code/
-    │   ├── api-setup/
-    │   └── local-models/
     ├── ideas/        # Brainstorming space
     └── links.md      # Curated external links
 ```

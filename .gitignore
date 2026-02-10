@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 
 package-lock.json
-workspaces/*
+
+# Ignore cloned repos inside workspaces
+workspaces/*/repos/
