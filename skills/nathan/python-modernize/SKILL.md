@@ -88,15 +88,15 @@ ignore = ["F403", "F405", "E501"]
 known-first-party = ["PACKAGE_NAME"]
 ```
 
-**Update `_version.py`** to use `importlib.metadata`:
+**Delete `_version.py`** entirely. The single source of truth for version is `pyproject.toml`.
 
-```python
-from importlib.metadata import version
-
-__version__ = version("PACKAGE_NAME")
-```
-
-Delete any hardcoded version strings. The single source of truth is `pyproject.toml`.
+- Remove any `from ._version import __version__` lines from `__init__.py` and other modules.
+- Where a version string is needed at runtime (e.g. a debug log or CLI `--version`), use `importlib.metadata` inline:
+  ```python
+  from importlib.metadata import version
+  _LOGGER.debug(f"Using package version {version('PACKAGE_NAME')}")
+  ```
+- Do NOT wrap in try/except — if the package isn't installed, the import itself fails first.
 
 ### Phase 2: Pre-commit — Switch to Ruff
 
@@ -198,6 +198,7 @@ jobs:
     runs-on: ubuntu-latest
     name: upload release to PyPI
     permissions:
+      contents: read
       id-token: write
 
     steps:
