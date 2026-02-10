@@ -21,7 +21,7 @@ This affects three places — keep them consistent:
 
 ## Process
 
-Work through these phases in order. Commit after each phase.
+Work through these phases in order.
 
 ### Phase 1: Packaging — Migrate to `pyproject.toml`
 
@@ -315,17 +315,3 @@ Rules:
 - Remove `# -*- coding: utf-8 -*-` lines
 - Run `ruff check --fix .` and `ruff format .` on the entire codebase
 
-## Commit Strategy
-
-Make one commit per phase:
-1. `modernize packaging to pyproject.toml`
-2. `update pre-commit to ruff`
-3. `update CI/CD for modern Python`
-4. `add type hints`
-5. `convert docstrings to Google style`
-6. `cleanup`
-
-Or consolidate into fewer commits if the package is small:
-1. `modernize packaging to pyproject.toml`
-2. `restyle docstrings`
-3. `update CI/CD, modernize`
