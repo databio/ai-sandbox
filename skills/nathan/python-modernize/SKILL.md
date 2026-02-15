@@ -98,29 +98,9 @@ known-first-party = ["PACKAGE_NAME"]
   ```
 - Do NOT wrap in try/except — if the package isn't installed, the import itself fails first.
 
-### Phase 2: Pre-commit — Switch to Ruff
+### Phase 2: Remove Pre-commit
 
-**Replace `.pre-commit-config.yaml`** contents with:
-
-```yaml
-repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
-    hooks:
-      - id: trailing-whitespace
-      - id: check-yaml
-      - id: end-of-file-fixer
-      - id: check-ast
-
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.0
-    hooks:
-      - id: ruff
-        args: [--fix]
-      - id: ruff-format
-```
-
-Remove any Black, isort, or flake8 references from pre-commit config.
+**Delete `.pre-commit-config.yaml`** entirely. Linting and formatting are handled by CI (ruff in the Lint workflow). No local hooks needed.
 
 ### Phase 3: CI/CD — Update GitHub Actions
 
@@ -135,8 +115,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install ruff
@@ -164,10 +144,10 @@ jobs:
         os: [ubuntu-latest, macos-latest]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -182,7 +162,7 @@ Key changes in test workflows:
 - Remove any `pip install -r requirements/requirements-*.txt` lines
 - Replace with `pip install ".[test]"` (dependencies come from pyproject.toml now)
 - Update Python version matrix to `["3.10", "3.13"]`
-- Update actions to `checkout@v4`, `setup-python@v5`
+- Update actions to `checkout@v6`, `setup-python@v6`
 
 **Publish workflow** (`.github/workflows/python-publish.yml`):
 
@@ -202,9 +182,9 @@ jobs:
       id-token: write
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: '3.x'
     - name: Install build dependencies
