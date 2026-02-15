@@ -27,3 +27,4 @@ package-lock.json
 
 # Ignore cloned repos inside workspaces
 workspaces/*/repos/
+workspaces/sam/

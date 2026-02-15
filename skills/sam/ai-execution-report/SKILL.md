@@ -159,8 +159,6 @@ A single italic line at the very end:
 - Reference specific sections of the deliverable when discussing what they cover
 
 ### What NOT to include
-- Percentage contribution tables (those belong in a different format)
-- Numerical ratings (1-10 scale)
 - Token counts, API costs, or other technical metrics
 - Promotional language about Claude's capabilities
 - Apologies or excessive self-criticism

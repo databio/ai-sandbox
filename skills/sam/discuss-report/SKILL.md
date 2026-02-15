@@ -1,3 +1,18 @@
+---
+name: discuss-report
+version: 1.0.0
+description: |
+  Discuss Report. Interactive discussion of a research report with grounded,
+  evidence-based responses. Loads source papers on-demand and maintains
+  epistemic honesty throughout the conversation.
+user-invocable: true
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+  - WebSearch
+---
+
 # Discuss Report
 
 Interactive discussion of a research report with grounded, evidence-based responses.

@@ -1,3 +1,18 @@
+---
+name: pdf-to-md
+version: 1.0.0
+description: |
+  PDF to Markdown Conversion. Converts research paper PDFs to clean, structured
+  markdown files for efficient context usage in research workflows.
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Bash
+---
+
 # PDF to Markdown Conversion
 
 Converts a research paper PDF to a clean, structured markdown file for efficient context usage.
@@ -114,7 +129,7 @@ Always preserve the original structure rather than imposing a template.
 
 ## Updating papers.yaml
 
-After successful conversion, update the paper's status in `papers.yaml` from `pending` to `processed`.
+After successful conversion, update the paper's status in `papers.yaml` to `processed`. The previous status may be `pending` (manually obtained PDF) or `downloaded` (auto-downloaded by `/literature-search`).
 
 **Matching rules (to avoid updating the wrong entry):**
 

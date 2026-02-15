@@ -1,3 +1,20 @@
+---
+name: research-report
+version: 1.0.0
+description: |
+  Research Report Generator. Synthesizes papers from a topic directory to address
+  a specific research question with grounded citations and epistemic honesty.
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Task
+  - Skill
+---
+
 # Research Report Generator
 
 Generate a research report that synthesizes papers from a topic directory to address a specific research question.
@@ -26,18 +43,22 @@ Read all markdown files from the `md/` subdirectory of the topic. These contain 
 - Results
 - Discussion sections
 
-**Important**: Only papers with corresponding `.md` files in the `md/` directory should be used as primary sources. Papers listed in `papers.yaml` without markdown files cannot be directly cited for specific claims.
+**Tier handling**: If papers in `papers.yaml` have a `tier` field, load only `tier: primary` papers in this step. Secondary papers are loaded later in Step 5. If no `tier` field exists on any paper, load all papers and skip Step 5.
 
-### Step 3: Analyze Papers for Relevance
+**Important**: Only papers with corresponding `.md` files in the `md/` directory can be cited for specific claims. Papers listed in `papers.yaml` without markdown files cannot be directly cited.
 
-For each paper, identify:
+### Step 3: Analyze Primary Papers for Relevance
+
+For each primary paper, identify:
 - Key findings relevant to the research question
 - Specific data, statistics, or experimental results
 - Methodological approaches
 - Limitations acknowledged by the authors
 - Areas of agreement or disagreement with other papers
 
-### Step 4: Write the Research Report
+### Step 4: Write the Research Report (Primary Sources)
+
+Draft the full report using only primary-tier papers as sources.
 
 Structure the report with the following sections:
 
@@ -74,6 +95,21 @@ Structure the report with the following sections:
 
 [List papers cited using format: paper_id - Full citation]
 ```
+
+### Step 5: Incorporate Secondary Papers
+
+If `tier: secondary` papers exist in `papers.yaml` and have corresponding `.md` files:
+
+1. **Load** all secondary paper markdown files from `md/`
+2. **Review** each secondary paper for content that:
+   - Provides additional supporting evidence for claims already in the report
+   - Offers broader context, background, or mechanistic detail
+   - Covers adjacent topics that strengthen the narrative
+   - Addresses gaps or limitations noted in the primary-source draft
+3. **Update the report** by weaving in secondary paper citations where they genuinely add value. Secondary papers should supplement, not restructure, the primary-source narrative.
+4. **Add a "Additional Context" subsection** at the end of the Findings section (before Evidence Gaps) that briefly notes any substantive contributions from secondary papers that didn't fit naturally into the existing thematic sections. If all secondary contributions were integrated inline, omit this subsection.
+
+Secondary papers should be cited with the same `[@paper_id]` format and included in the References section.
 
 ## Citation Format
 
@@ -148,17 +184,16 @@ Write the completed report to a file in the topic directory:
 ```
 User: /research-report tgf_sex/ "How do female sex hormones affect TGF-β signaling in COPD?"
 
-1. Read tgf_sex/papers.yaml → get paper metadata
-2. Read all files in tgf_sex/md/ → get paper content
-3. Analyze papers for:
+1. Read tgf_sex/papers.yaml → get paper metadata, note tier assignments
+2. Read primary-tier md files from tgf_sex/md/ → get primary paper content
+3. Analyze primary papers for:
    - TGF-β signaling mechanisms
    - Estrogen/progesterone effects
    - COPD-specific findings
    - Sex difference data
-4. Write report with:
-   - Synthesis of findings
-   - Specific citations to evidence
-   - Explicit gaps in the literature
-5. Apply /humanizer skill
-6. Save to tgf_sex/report_tgf_sex_hormones.md
+4. Write report draft from primary sources
+5. Read secondary-tier md files → review for additional context
+6. Update report with secondary paper contributions where they add value
+7. Apply /humanizer skill
+8. Save to tgf_sex/report_tgf_sex_hormones.md
 ```
